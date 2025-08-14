@@ -16,7 +16,7 @@ df_downtime = pd.read_sql("SELECT * FROM downtime", engine)
 st.set_page_config(page_title="Pienpanimon tuotanto-dashboard", layout="wide")
 
 st.title("🍺 Pienpanimon tuotanto-dashboard")
-st.markdown("Tämä dashboard näyttää tuotannon, laatupoikkeamat ja seisokit kuukauden ajalta.")
+st.markdown("Tämä dashboard näyttää tuotannon, laatupoikkeamat ja seisokit viikon ajalta.")
 
 # Tuotanto kuvaajana
 prod_summary = df_production.groupby("product_name")["units_produced"].sum().reset_index()
@@ -48,3 +48,4 @@ st.markdown(f"""
 **Yleisin laatupoikkeama:** {most_common_defect['defect_type']} ({most_common_defect['defect_count']} kpl)  
 **Suurin seisokkien syy:** {main_downtime_reason['reason']} ({main_downtime_reason['minutes_lost']} minuuttia)  
 """)
+
